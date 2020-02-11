@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title></title>
+
+    <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	</head>
+	<body style="text-align: center;">
+
+    <a onclick="openModalHtml()" class="btn btn-secondary btn-sm">Click</a>
+
+    <!-- modal template -->
+    <div class="modal fade bg-white" id="modalTemplateHtml">
+      <div class="modal-dialog modal-insc">
+        <div class="modal-content">
+
+            <div class="modal-body">
+              <div >
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe id="htmlPreview" class="embed-responsive-item" allowfullscreen src=""></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /modal template -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+		<script type="text/javascript">
+			function openModalHtml(){
+        /* META */
+        var meta = document.createElement('meta');
+        meta.httpEquiv = "Content-type";
+        meta.content = "text/html; charset=UTF-8";
+
+        var doc = document.getElementById('htmlPreview').contentWindow.document.head;
+        doc.append(meta);
+
+        /* LINK */
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = "www.google.com.br";
+
+        var docA = document.getElementById('htmlPreview').contentWindow.document.head;
+        docA.append(link);
+
+        /* TTITLE */
+        var titleNew = 'New title Head Iframe'; 
+        document.getElementById('htmlPreview').contentWindow.document.title = titleNew;
+
+        /* BODY */
+        var newBody = "<h2>Change body</h2>";
+
+        var docB = document.getElementById('htmlPreview').contentWindow.document.body;
+        docB.innerHTML = newBody;
+
+        $('#modalTemplateHtml').modal('show');
+      };
+		</script>
+	</body>
+</html>
